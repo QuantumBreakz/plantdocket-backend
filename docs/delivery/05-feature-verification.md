@@ -15,7 +15,7 @@ Every acceptance-case ID belongs to a feature specification under [MVP scope](..
 | [F09 Audit](../specs/F09-audit.md) | F09-A01–A08 | Revision and approval evidence, durable replay, protected retrieval and manifest verification |
 | [F10 Site operations](../specs/F10-site-operations.md) | F10-A01–A11 | On-site and off-site primary install, private remote access, backup separation, restore, rollback, source fencing and revocation |
 | [F11 Remarks](../specs/F11-document-remarks.md) | F11-A01–A06 | Document and revision context, draft privacy, corrections, audit and retries |
-| [F12 Multi-step approval](../specs/F12-revision-approval.md) | F12-A01–A10 | Ordered department decisions, template validation, returns, conflicts, final release and immutable review history |
+| [F12 Multi-step approval](../specs/F12-revision-approval.md) | F12-A01–A12 | Ordered department decisions, reviewer queue scope, template setup, returns, conflicts, final release and immutable review history |
 
 ## Test lanes
 

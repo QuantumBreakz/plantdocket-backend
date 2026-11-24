@@ -18,7 +18,7 @@
 
 **Impact and acceptance.** A real invited address receives a code and downloads the expected revision. Wrong, expired, reused and superseded codes fail. A forwarded link cannot redeem without email access. Revocation, file trash, lost issuer access and range retries cannot create a new authorized response. Record deliverability, verified redemption, and guest download outcomes.
 
-**Dependencies.** [F05](F05-versions-trash.md), [F08](F08-folder-permissions.md), [F09](F09-audit.md), approved guest domain, DMZ and SMTP relay.
+**Dependencies.** [F05](F05-versions-trash.md), [F08](F08-folder-permissions.md), [F09](F09-audit.md), [F12 final approval](F12-revision-approval.md), approved guest domain, DMZ and SMTP relay.
 
 ## Contract and decisions
 

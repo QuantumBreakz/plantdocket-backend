@@ -33,7 +33,16 @@ Each document has an approval section showing its effective revision, active ste
 - **NFR1.** The current effective revision remains stable through scan, review, return, retry and approval failure. Ordinary browse and downloads switch only after the approval commit.
 - **NFR2.** Keep immutable approval evidence with reviewer and department, step and template version, reason or note, time, review and revision IDs, digest and previous/effective revision. Restore preserves all decisions. A new draft restored from earlier bytes follows approval again.
 
-The scoped administration contract exposes versioned template create, update and assignment. Reject templates with missing or ambiguous steps and only allow valid workspace users or department groups. Drafts without a usable template remain drafts and show an actionable configuration issue. Adding another draft does not replace an active submission. A change under review requires an explicit cancellation and new submission to change the reviewed revision.
+### Reviewer queue and template setup
+
+| API | Behavior |
+| --- | --- |
+| `GET /v1/workspaces/{workspaceId}/review-queue` | Return a cursor page of active steps assigned to the signed-in reviewer and visible under current document permissions. Include document title and reference, revision, current step number, total required steps and submission time. Order by the time the step became active and its ID. Recheck eligibility on each page. |
+| `POST /v1/workspaces/{workspaceId}/approval-templates` | Create a template and its initial version with ordered steps and eligible workspace users or department groups. |
+| `POST /v1/workspaces/{workspaceId}/approval-templates/{templateId}/versions` | Create an immutable version for future submissions. Keep the version bound to any in-flight submission intact. |
+| `PUT /v1/workspaces/{workspaceId}/approval-template-assignments/{scopeType}/{scopeId}` | Assign a template version to a folder or category with a conditional assignment revision. Apply the change to future submissions and record it in Audit. |
+
+Reject templates with missing or ambiguous steps and only allow valid workspace users or department groups. Drafts without a usable template remain drafts and show an actionable configuration issue. Adding another draft does not replace an active submission. A change under review requires an explicit cancellation and new submission to change the reviewed revision. The reviewer queue shows actionable steps. The decision endpoint remains authoritative when eligibility or active state changes after the queue is read.
 
 **Impact and acceptance.** A factory reader can reliably retrieve the currently approved drawing or policy. A reviewer can reconstruct who submitted and approved the exact revision. Audit and recovery tests verify the committed decision and effective pointer.
 
@@ -53,3 +62,5 @@ The scoped administration contract exposes versioned template create, update and
 | F12-A08 | Try to submit a held or unverifiable revision | No review is created and all ordinary delivery remains denied. |
 | F12-A09 | Edit the template after a review starts and remove eligibility for the active step | The in-flight step rules are preserved and live eligibility is enforced. Blocking is visible. Authorized cancellation and resubmission retain the old decisions and apply the new template. |
 | F12-A10 | Submit a draft whose folder and category have no valid template | Submission fails with a configuration error. The draft remains intact and the existing effective revision stays current. |
+| F12-A11 | Engineering and Maintenance open their queues before and after Engineering approves the first step | Only eligible Engineering reviewers see the first step. Maintenance sees the second step only after it becomes active. Revoking a reviewer's access removes the item on their next queue request. |
+| F12-A12 | An administrator changes the template assignment during an active review, then starts a separate review under the new assignment | The active review keeps its original template version and the later review uses the new version. An unauthorized administrator or stale assignment update cannot change routing. |

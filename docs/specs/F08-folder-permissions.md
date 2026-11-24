@@ -2,7 +2,7 @@
 
 **Problem and audience.** Workspace administrators need to protect folders while letting employees find and use documents allowed by policy.
 
-**Use-case scenario.** An administrator limits a sensitive folder to selected employees. A viewer can read its clean files but cannot upload or share unless specifically granted the appropriate role.
+**Use-case scenario.** An administrator limits a sensitive folder to selected employees. A viewer can read its effective approved documents. Upload and sharing require the relevant scoped permissions.
 
 **Product flow.** Choose folder → inspect effective access → assign a role or restrict inheritance → review resulting access and confirm.
 
