@@ -1,23 +1,8 @@
-# MVP Backend Delivery Phases and Scaffold
+# MVP Backend Delivery Phases
 
-The proposed `plantdocket-backend` repository holds the independent Go deployables for Library, Transfer API, Transfer Worker, Sharing and Audit. The `plantdocket-web` repository owns the employee website and session edge. The backend publishes the versioned OpenAPI contract. Each repo builds independently, and the release manifest pairs the tested web and backend digests. The [architecture](../architecture/01-system-architecture.md) assigns ownership and the [MVP PRD](../prds/02-onsite-mvp-prd.md) defines acceptance.
+The `plantdocket-backend` repository holds the independent Go deployables for Library, Transfer API, Transfer Worker, Sharing and Audit. The `plantdocket-web` repository owns the employee website and session edge. The backend publishes the versioned OpenAPI contract. Each repo builds independently, and the release manifest pairs the tested web and backend digests. The [architecture](../architecture/01-system-architecture.md) assigns ownership and the [MVP PRD](../prds/02-onsite-mvp-prd.md) defines acceptance.
 
-```text
-services/library/             Workspace, permissions, catalog, revisions, remarks, approval
-services/transfer/            API, worker, scanner adapter and object adapter
-services/sharing/             Invite, email challenges and guest templates
-services/audit/               Ingest, querying, exports and archive verification
-contracts/public/             Versioned OpenAPI and consumer contract fixtures
-contracts/internal/           Service contracts, event schemas and examples
-deploy/compose/               Shared stack and dev, CI, staging, primary-site overlays
-deploy/site/                  On-site and off-site profiles, upgrade and preflight
-deploy/kubernetes/            Helm and distributed environment profiles
-deploy/aws/                   Terraform modules and regional profiles
-tests/journeys/               Cross-service, failure and recovery smoke tests
-ops/runbooks/                 Install, monitor, backup, restore and cutover
-```
-
-Each service owns its DB migrations, API boundaries, build, health checks, tests and image. Share small transport and telemetry packages where there is an actual contract to reuse. Add CI gates for schema changes, consumer contracts, security scans, SBOM generation, signing and promotion by image digest. Pin image versions and runtimes after customer and storage conformance checks. Treat the layout above as the scaffold to implement.
+The [backend repository scaffold](../scaffolding/backend.md) owns the precise layout, local entry points, service databases and cross-repository release handoff. Each service owns its migrations, health checks, tests and image.
 
 ## Delivery sequence
 

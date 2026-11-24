@@ -18,6 +18,8 @@ React Native is a later way to use the employee product. Its functionality is li
 
 The native client will make remote calls to the existing versioned service APIs through an approved client entry point. It may need native sign-in and transport integration while reusing the same service-side authorization, audit and data contracts. The current MVP uses versioned HTTP APIs described in OpenAPI. Any future RPC protocol choice is a separate transport decision and carries the same business contracts.
 
+The [future mobile repository scaffold](../scaffolding/mobile.md) records the proposed layout, kickoff criteria, native boundary and parity evidence.
+
 ## Infrastructure adoption criteria
 
 - **ECS and EKS.** A microservice can scale independently under either scheduler. Use ECS when AWS owns the runtime. Choose EKS if a customer platform mandate, reusable Helm/GitOps operations, or a measured workload calls for Kubernetes across environments. Budget cluster operations and upgrade ownership before adopting it.

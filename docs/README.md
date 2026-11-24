@@ -11,6 +11,7 @@ The first release is factory document control for drawings, diagrams, policies a
 - [Web MVP PRD](prds/02-onsite-mvp-prd.md) owns users, workflows and the launch features.
 - [Platform delivery PRD](prds/03-platform-delivery-prd.md) owns staging, release, recovery and operator outcomes.
 - [Frontend delivery](mvp/05-frontend-delivery.md) and [backend delivery](mvp/06-backend-delivery.md) define implementation phases and the repository scaffold.
+- [Repository scaffolds](scaffolding/README.md) define web and backend layouts, their end-to-end handoffs and the separate future mobile plan.
 - [Post-MVP roadmap](mvp/03-post-mvp-roadmap.md) defines future rollout and enterprise capabilities.
 
 ## Architecture and delivery operations

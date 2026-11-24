@@ -9,4 +9,7 @@ Web repository: [plantdocket-web](https://github.com/QuantumBreakz/plantdocket-w
 - [Master Documents](docs/README.md)
 - [Architecture](Architecture.md)
 - [MVP scope](docs/mvp/01-scope.md)
+- [Repository scaffolds](docs/scaffolding/README.md)
+- [Backend scaffold](docs/scaffolding/backend.md)
+- [Future mobile scaffold](docs/scaffolding/mobile.md)
 - [Feature specifications and verification](docs/delivery/05-feature-verification.md)
